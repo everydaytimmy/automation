@@ -1,0 +1,39 @@
+import re
+
+with open("/Users/timothyviccari/Documents/codefellows/401/automation/potential_contacts.txt") as file:
+  potentials = file.read()
+
+phone = []
+phone.extend(re.findall('\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4}', potentials))
+
+phone_no_duplicates = list(set(phone))
+phone_ordered = phone_no_duplicates.sort()
+
+phone_num_string = ''
+for num in phone_no_duplicates:
+  phone_num_string += num + ", "
+
+print(phone_num_string) 
+
+with open("/Users/timothyviccari/Documents/codefellows/401/automation/phone_numbers.txt", 'w') as file:
+  phone_nums = file.write(phone_num_string)
+
+
+
+### ----------------- EMAIL -------------------###
+
+email = []
+email.extend(re.findall('[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+', potentials))
+
+email_no_duplicates = list(set(email))
+mail_ordered = email_no_duplicates.sort()
+
+email_string = ''
+for num in email_no_duplicates:
+  email_string += num + ", "
+
+print(email_string) 
+
+with open("/Users/timothyviccari/Documents/codefellows/401/automation/emails.txt", 'w') as file:
+  emails = file.write(email_string)
+
