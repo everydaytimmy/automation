@@ -3,6 +3,8 @@ import re
 with open("/Users/timothyviccari/Documents/codefellows/401/automation/potential_contacts.txt") as file:
   potentials = file.read()
 
+### ----------------- PHONE -------------------###
+
 phone = []
 phone.extend(re.findall('\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4}', potentials))
 
@@ -13,12 +15,9 @@ phone_num_string = ''
 for num in phone_no_duplicates:
   phone_num_string += num + ", "
 
-print(phone_num_string) 
 
 with open("/Users/timothyviccari/Documents/codefellows/401/automation/phone_numbers.txt", 'w') as file:
   phone_nums = file.write(phone_num_string)
-
-
 
 ### ----------------- EMAIL -------------------###
 
@@ -36,4 +35,7 @@ print(email_string)
 
 with open("/Users/timothyviccari/Documents/codefellows/401/automation/emails.txt", 'w') as file:
   emails = file.write(email_string)
+
+
+
 
